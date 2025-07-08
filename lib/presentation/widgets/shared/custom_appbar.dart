@@ -8,10 +8,10 @@ class CustomAppbar extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     final titleStyle = Theme.of(context).textTheme.titleMedium;
 
-    return SafeArea(
-        child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: SizedBox(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: SafeArea(
+          child: SizedBox(
         width: double.infinity,
         child: Row(
           children: [
@@ -30,7 +30,7 @@ class CustomAppbar extends StatelessWidget {
             IconButton(onPressed: () {}, icon: const Icon(Icons.search))
           ],
         ),
-              ),
-            ));
+      )),
+    );
   }
 }

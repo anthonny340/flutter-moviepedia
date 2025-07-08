@@ -11,12 +11,18 @@ class MoviesSlideshow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return SizedBox(
       height: 210,
       width: double.infinity,
       child: Swiper(
         viewportFraction: 0.8,
         scale: 0.8,
+        pagination: SwiperPagination(
+          margin: const EdgeInsets.only(top: 0),
+            builder: DotSwiperPaginationBuilder(
+                activeColor: colors.primary, color: colors.secondary)),
         itemCount: movies.length,
         itemBuilder: (context, index) {
           final movie = movies[index];
@@ -57,6 +63,10 @@ class _Slide extends StatelessWidget {
                 }
                 return FadeIn(child: child);
               },
+              //El errorBuilder es clave por si surge un error al cargar la imagen
+              //si es por el formato de la imagen w500 lo que hace es que los remplaza por uno de
+              //mejor calidad y en caso de que no funcione esto igual lo mandara al nuevo errorBuilder
+              //y aparece el texto "Error al cargar la imagen"
               errorBuilder: (context, error, stackTrace) {
                 return Image.network(
                   movie.backdropPath.replaceAll('w500', 'original'),

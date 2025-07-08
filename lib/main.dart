@@ -7,7 +7,8 @@ import 'package:cinemapedia/config/theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: '.env'); //Espera a que se lean todas las variables de entorno
+  await dotenv.load(
+      fileName: '.env'); //Espera a que se lean todas las variables de entorno
   runApp(const ProviderScope(child: MyApp()));
 }
 
