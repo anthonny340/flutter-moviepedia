@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cinemapedia/config/helpers/human_formats.dart';
-import 'package:cinemapedia/config/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cinemapedia/config/domain/entities/movie.dart';
@@ -139,13 +138,13 @@ class _Slide extends StatelessWidget {
             child: Row(
               children: [
                 Icon(
-                  Icons.star_half_outlined,
-                  color: Colors.yellow.shade800,
+                  Icons.star_half_rounded,
+                  color: Colors.amber[800],
                 ),
                 const SizedBox(width: 3),
                 Text('${movie.voteAverage}',
                     style: textStyle.bodyMedium
-                        ?.copyWith(color: Colors.yellow.shade800)),
+                        ?.copyWith(color: Colors.amber[800])),
                 const Spacer(),
                 //Aqui se esta usando el numberPopularityRevided
                 Text(HumanFormats.number(numberPopularityRevised),
