@@ -114,7 +114,6 @@ class _MovieDetails extends StatelessWidget {
             ],
           ),
         ),
-        //TODO mostrar los actores Lisview
         _ActorsByMovie(movieId: movie.id.toString()),
         const SizedBox(
           height: 50,
@@ -151,7 +150,6 @@ class _ActorsByMovie extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //TODO actor photo
                 FadeInRight(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -162,9 +160,7 @@ class _ActorsByMovie extends ConsumerWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                )
-                //TODO actor name
-                ,
+                ),
                 const SizedBox(
                   height: 5,
                 ),

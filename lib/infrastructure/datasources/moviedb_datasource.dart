@@ -17,7 +17,7 @@ class MoviedbDatasource extends MoviesDatasource {
       queryParameters: {
         //Parámetros por defecto para todas las peticiones
         'api_key':
-            Environment.ThemovieDbKey, // Incluye la API key automáticamente
+            Environment.themovieDbKey, // Incluye la API key automáticamente
         'language': 'es-ES',
       }));
 
