@@ -3,3 +3,5 @@ La carpeta domain >> Contiene el núcleo de tu aplicación: define el "qué" se 
 La subcarpeta entities >> Contiene los modelos o clases que representan conceptos del dominio (como User, Movie, Product, etc).
 La subcarpeta repositories >> Contiene las interfaces (contratos) que definen lo que puede hacerse con los datos, sin importar desde dónde vienen.
 La subcarpeta datasources >> Contiene las interfaces opcionales que describen cómo acceder a los datos crudos, por ejemplo desde una API o una base local.
+
+El objetivo del repositorio es que nos permita estar cambiando de datasource facilmente
