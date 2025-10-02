@@ -182,45 +182,21 @@ class _ActorsByMovie extends ConsumerWidget {
   }
 }
 
-/*Este provider lo vamos a utilizar para llamar a la base de datos
-y consultarle si la pelicula esta agregada a favoritos. Para esto 
-usamos el .family en el FutureProvider porque el Family nos permite
-enviar un argumento, que seria en este caso el ID de la pelicula.
-La documentacion: https://riverpod.dev/es/docs/concepts2/family*/
-final isFavoriteProvider = FutureProvider.family.autoDispose(
-  (ref, int movieId) {
-    final localStorageRepository = ref.watch(localStorageRepositoryProvider);
-    return localStorageRepository
-        .isMovieFavorite(movieId); // si esta en favoritos
-  },
-);
-
-class _CustomSliverAppBar extends ConsumerWidget {
+class _CustomSliverAppBar extends StatelessWidget {
   final Movie movie;
   const _CustomSliverAppBar({required this.movie});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isFavoriteFuture = ref.watch(isFavoriteProvider(movie.id));
+  Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SliverAppBar(
       actions: [
         IconButton(
-          onPressed: () async {
-            await ref
-                .watch(localStorageRepositoryProvider)
-                .toggleFavorite(movie);
-            ref.invalidate(isFavoriteProvider(movie.id));
-          },
-          icon: isFavoriteFuture.when(
-            data: (isFavorite) => isFavorite
-                ? const Icon(Icons.favorite, color: Colors.red)
-                : const Icon(Icons.favorite_border),
-            error: (_, __) => throw UnimplementedError(),
-            loading: () => const CircularProgressIndicator(
-              strokeWidth: 2,
-            ),
-          ),
+          onPressed: () {},
+          icon: Icon(Icons.favorite_border)
+
+          // const Icon(Icons.favorite,color: Colors.red)
+          ,
         )
       ],
       backgroundColor: Colors.white,
