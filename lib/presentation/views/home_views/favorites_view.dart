@@ -23,9 +23,30 @@ class _FavoritesViewState extends ConsumerState<FavoritesView> {
 
     //Formas de transformar el mapa en listas
     // final myMovies = favoriteMovies.values.toList(); //Opcion 1
-    final myMovies = favoriteMovies.values.toList(); //Opcion 3 - parte 1
+    final myMoviesList = favoriteMovies.values.toList(); //Opcion 3 - parte 1
 
-    return Scaffold(body: MoviesMasonry(movies: myMovies)
+    final colorPrimary = Theme.of(context).colorScheme.primary;
+
+    if (myMoviesList.isEmpty) {
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.favorite_border, size: 100, color: colorPrimary),
+              const Text('No tienes películas favoritas'),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Scaffold(
+        body: MoviesMasonry(
+      movies: myMoviesList,
+      loadNextPage: () =>
+          ref.read(favoriteMoviesProvider.notifier).loadNextPage(),
+    )
         /*
         ListView.builder(
       itemBuilder: (context, index) {

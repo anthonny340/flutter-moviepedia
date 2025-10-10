@@ -17,11 +17,40 @@ class _MoviesMasonryState extends State<MoviesMasonry> {
   //TODO: Variables a emplear en el infinit scroll
   bool isLastPage = false;
   bool isLoading = false;
+  final scrollController = ScrollController();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    scrollController.addListener(
+      () {
+        if (widget.loadNextPage == null) return;
+
+        if (scrollController.position.pixels + 200 >=
+            scrollController.position.maxScrollExtent) {}
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  void loadNextPageMovies() async {
+    if (isLoading || isLastPage) return;
+
+    if (widget.loadNextPage == null) return;
+
+    isLoading = true;
+    final movies = await widget.loadNextPage!();
+    isLoading = false;
+
+    if (movies.isEmpty) {
+      isLastPage = true;
+    }
   }
 
   @override
